@@ -14,6 +14,15 @@ input:focus {
 .grey {
    color: #B1B1B1;
 }
+ul {
+   list-style: none;
+}
+.avatar {
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+}
+
 .d-flex-center {
    display: flex;
    justify-content: center;
@@ -58,15 +67,17 @@ input:focus {
    background-color: #EAEAEA;
 }
 
+/* AREA NOTIFICA */
 .notification-area {
    height: 70px;
 
    background-color: #8EDAFC;
 }
 
+/* AREA RICERCA */
 .search-area {
-   height: 35px;
-   padding: 4px;
+   height: 40px;
+   padding: 6px;
 }
 .search-area input {
    width: 85%;
@@ -76,7 +87,6 @@ input:focus {
    border-bottom-right-radius: 3px;
    border: none;
 }
-
 .search-area div {
    width: 15%;
    height: 100%;
@@ -86,4 +96,46 @@ input:focus {
 
    cursor: pointer;
    background-color: #fff;
+}
+
+/* AREA CHAT LISTA */
+.chat-list {
+   width: calc(100% - 10px);
+   height: calc(100% - 60px - 70px - 40px);
+
+   border-right: 1px solid #D8D8D8;
+   border-top: 1px solid #D8D8D8;
+   background-color: #fff;
+
+   overflow: auto;
+}
+.contact {
+   height: 60px;
+   padding: 8px;
+
+   display: flex;
+   align-items: center;
+
+   cursor: pointer;
+   border-bottom: 1px solid #D8D8D8;
+}
+.contact:last-child {
+   border-bottom: none;
+}
+.contact.active {
+   background-color: #EAEBEA;
+}
+.contact .avatar {
+   margin: 0 14px 0 20px;
+}
+.contact span {
+   font-size: 12px;
+}
+.contact .date,
+.contact .last-msg {
+   align-self: flex-start;
+   line-height: 16px;
+}
+.contact .date {
+   margin-left: auto;
 }
