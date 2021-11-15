@@ -21,9 +21,35 @@
    
             <div class="left-side">
    
-               <div class="top-content"></div>
+               <div class="top-content">
+                  <!-- sezione info profilo personale -->
+                  <div class="profile">
+                     <img 
+                        src="img/avatar_io.jpg" 
+                        alt="Io" 
+                        class="avatar"
+                     >
+                     <h5>Luigi Verde</h5>
+                  </div>
+                  <!-- icone -->
+                  <div class="icons grey">
+                     <i class="fas fa-sync"></i>
+                     <i class="fas fa-comment-alt"></i>
+                     <i class="fas fa-ellipsis-v"></i>
+                  </div>
+               </div>
    
-               <div class="notification-area"></div>
+               <div class="notification-area">
+                  <!-- campana -->
+                  <div class="bell">
+                     <i class="fas fa-bell-slash"></i>
+                  </div>
+                  <!-- attiva nottifica toggle -->
+                  <div class="active-notification">
+                     <p>Ricevi notifiche di nuovi messaggi</p>
+                     <span>Attiva notifiche desktop</span>
+                  </div>
+               </div>
    
                <!-- area di ricerca -->
                <div class="search-area d-flex-center grey">
@@ -45,12 +71,14 @@
                         :alt="contact.name"
                         class="avatar"
                      >
+                     <!-- ultimo messaggio -->
                      <div class="last-msg">
                         <h5>{{ contact.name }}</h5>
                         <span class="grey">Lorem ipsum dolor sit.</span>
                      </div>
-                     <div class="date grey">
-                        <span>10/10/1234 4:32:44</span>
+                     <!-- data ultimo messaggio -->
+                     <div class="date">
+                        <span class="grey">10/10/1234 4:32:44</span>
                      </div>
                   </div>
                </div>
@@ -59,8 +87,63 @@
    
             <div class="right-side">
    
-               <div class="top-content"></div>
+               <div class="top-content">
+                  <!-- info profilo chat aperta -->
+                  <div class="profile">
+                     <img 
+                        src="img/avatar_1.jpg"
+                        class="avatar"
+                     >
+                     <section>
+                        <h5>Simone</h5>
+                        <span class="last-access">
+                           Ultimo accesso oggi alle 10/01/2020 16:15:22
+                        </span>
+                     </section>
+                  </div>
+                  <!-- icone -->
+                  <div class="icons grey">
+                     <i class="fas fa-search"></i>
+                     <i class="fas fa-paperclip"></i>
+                     <i class="fas fa-ellipsis-v"></i>
+                  </div>
+               </div>
+
+               <div class="display-messages">
+                  <div class="messages-container">
+                     <ul>
+                        <li class="sent">
+                           <p>LOOl lolo LOOl lol lolo lol </p>
+                        </li>
+                        <li class="sent">
+                           <p>LOOl lolo LOOl lol lolo lol </p>
+                        </li>
+                        <li class="sent">
+                           <p>LOOl lolo LOOl lol lolo lol </p>
+                        </li>
+                        <li class="recived">
+                           <p>Lorem, ipsum dolor.</p>
+                        </li>
+                        <li class="recived">
+                           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius perspiciatis ducimus voluptate non maxime harum autem magni consequuntur sapiente est!</p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
    
+               <div class="write-message">
+                  <!-- emote -->
+                  <div class="icons">
+                     <i class="far fa-smile"></i>
+                  </div>
+                  <!-- input messaggio -->
+                  <input type="text" placeholder="Invia un messaggio">
+                  <!-- registrazione -->
+                  <div class="icons">
+                     <i class="fas fa-microphone"></i>
+                  </div>
+               </div>
+
             </div>
    
          </div>
