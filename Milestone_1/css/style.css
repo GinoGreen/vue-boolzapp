@@ -1,0 +1,14 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: 'Roboto', sans-serif;
+}
+
+.container {
+   height: 100vh;
+   background-image: linear-gradient(180deg, green totpx, grey totpx);
+}
