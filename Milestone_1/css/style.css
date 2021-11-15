@@ -218,7 +218,6 @@ ul {
 
 /* DISPLAY MESSAGES */
 .display-messages {
-   width: calc(100% - 10px);
    height: calc(100% - 60px - 60px);
    background-image: url('../img/mine.jpg');
    overflow: auto;
@@ -241,8 +240,9 @@ ul {
 }
 .recived,
 .sent {
-   min-width: 30%;
+   min-width: 36%;
    max-width: 70%;
+   min-height: 60px;
    padding: 15px;
    margin-top: 10px;
    margin-bottom: 10px;
@@ -252,4 +252,12 @@ ul {
 
    font-size: 16px;
    border-radius: 10px;
+}
+.messages-container span.date {
+   position: absolute;
+   bottom: 5px;
+   right: 10px;
+
+   color: #B5B7BB;
+   font-size: 12px;
 }
