@@ -8,12 +8,20 @@ body {
    font-family: 'Roboto', sans-serif;
 }
 
-.body-bg {
-   height: 100vh;
-
+input:focus {
+   outline: 2.5px solid #00007e;
+}
+.grey {
+   color: #B1B1B1;
+}
+.d-flex-center {
    display: flex;
    justify-content: center;
    align-items: center;
+}
+
+.body-bg {
+   height: 100vh;
 
    background-image: linear-gradient(#249688 100px, #DDDBD2 100px, #D2DBDB 67%);
 }
@@ -25,18 +33,57 @@ body {
    
    display: flex;
 
-   background-color: #fff; /*  da rimuovere */
+   background-color: #f1f1f1;
 }
 
-.left-content {
+.left-side {
    width: 35%;
    height: 100%;
 
-   border: 1px solid black;
+   border-right: 1px solid #D8D8D8;
 }
-.right-content {
+.right-side {
    width: 65%;
    height: 100%;
+}
+ 
+.top-content {
+   height: 60px;
+   padding: 6px;
 
-   border: 1px solid black;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+   background-color: #EAEAEA;
+}
+
+.notification-area {
+   height: 70px;
+
+   background-color: #8EDAFC;
+}
+
+.search-area {
+   height: 35px;
+   padding: 4px;
+}
+.search-area input {
+   width: 85%;
+   height: 100%;
+
+   border-top-right-radius: 3px;
+   border-bottom-right-radius: 3px;
+   border: none;
+}
+
+.search-area div {
+   width: 15%;
+   height: 100%;
+
+   border-top-left-radius: 3px;
+   border-bottom-left-radius: 3px;
+
+   cursor: pointer;
+   background-color: #fff;
 }
