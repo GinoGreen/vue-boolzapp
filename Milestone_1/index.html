@@ -63,11 +63,11 @@
                <div class="chat-list">
                   <div 
                      class="contact"
-                     v-for="contact in contacts"
+                     v-for="(contact, index) in contacts"
                   >
                      <!-- avatar img -->
                      <img 
-                        :src="'img/avatar' + contact.avatar + '.jpg'" 
+                        :src="`img/avatar${contact.avatar}.jpg`" 
                         :alt="contact.name"
                         class="avatar"
                      >
@@ -112,20 +112,11 @@
                <div class="display-messages">
                   <div class="messages-container">
                      <ul>
-                        <li class="sent">
-                           <p>LOOl lolo LOOl lol lolo lol </p>
-                           <span class="date">data lol lolo lol</span>
-                        </li>
-                        <li class="sent">
-                           <p>LOOl lolo LOOl lol lolo lol </p>
-                           <span class="date">data lol lolo lol</span>
-                        </li>
-                        <li class="recived">
-                           <p>Lorem, ipsum dolor.</p>
-                           <span class="date">data lol lolo lol</span>
-                        </li>
-                        <li class="recived">
-                           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius perspiciatis ducimus voluptate non maxime harum autem magni consequuntur sapiente est!</p>
+                        <li 
+                           v-for
+                           class="sent"
+                        >
+                           <p>LOOl lolo LOOl lol lolo lol</p>
                            <span class="date">data lol lolo lol</span>
                         </li>
                      </ul>

@@ -4,6 +4,9 @@
    box-sizing: border-box;
 }
 
+#app {
+   overflow: hidden;
+}
 body {
    font-family: 'Roboto', sans-serif;
 }
@@ -39,7 +42,7 @@ ul {
 .container {
    height: calc(100vh - 50px);
    width: 85vw;
-   min-width: 500px;
+   min-width: 760px;
    
    display: flex;
 
@@ -149,7 +152,6 @@ ul {
 
 /* AREA CHAT LISTA */
 .chat-list {
-   width: calc(100% - 10px);
    height: calc(100% - 60px - 70px - 40px);
 
    border-right: 1px solid #D8D8D8;
@@ -168,11 +170,14 @@ ul {
    cursor: pointer;
    border-bottom: 1px solid #D8D8D8;
 }
+.contact:hover {
+   background-color: #ebebeb;
+}
 .contact:last-child {
    border-bottom: none;
 }
 .contact.active {
-   background-color: #EAEBEA;
+   background-color: #ddd;
 }
 .contact .avatar {
    margin: 0 15px;
@@ -243,6 +248,7 @@ ul {
    min-width: 36%;
    max-width: 70%;
    min-height: 60px;
+
    padding: 15px;
    margin-top: 10px;
    margin-bottom: 10px;
