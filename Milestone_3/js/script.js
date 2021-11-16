@@ -139,7 +139,7 @@ const app = new Vue({
       },
       sendMsg() {
 
-         if (this.msgToSend.length !== 0) {
+         if (this.msgToSend.trim() !== '') {
 
             let time = '';
             time = this.getDate(time);
