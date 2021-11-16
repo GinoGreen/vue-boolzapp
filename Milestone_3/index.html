@@ -116,7 +116,7 @@
                      <ul>
                         <li 
                            v-for="(message, index) in contacts[counter].messages"
-                           :class="[ message.status === 'sent' ? 'sent' : 'received' ]"
+                           :class="message.status"
                         >
                            <p>{{ message.message }}</p>
                            <span class="date">{{ message.date }}</span>
