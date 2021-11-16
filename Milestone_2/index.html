@@ -76,11 +76,11 @@
                      <!-- ultimo messaggio -->
                      <div class="last-msg">
                         <h5>{{ contact.name }}</h5>
-                        <span class="grey">Lorem ipsum dolor sit.</span>
+                        <span class="grey">{{ lastMsgPreview = getLastMsgPreview(index) }}</span>
                      </div>
                      <!-- data ultimo messaggio -->
                      <div class="date">
-                        <span class="grey">10/10/1234 4:32:44</span>
+                        <span class="grey">{{ contact.messages[contact.messages.length - 1].date }}</span>
                      </div>
                   </div>
                </div>
@@ -93,13 +93,13 @@
                   <!-- info profilo chat aperta -->
                   <div class="profile">
                      <img 
-                        src="img/avatar_1.jpg"
+                        :src="`img/avatar${contacts[counter].avatar}.jpg`"
                         class="avatar"
                      >
                      <section>
-                        <h5>Simone</h5>
+                        <h5>{{ contacts[counter].name }}</h5>
                         <span class="last-access">
-                           Ultimo accesso oggi alle 10/01/2020 16:15:22
+                           Ultimo accesso oggi alle {{ contacts[counter].messages[contacts[counter].messages.length - 1].date }}
                         </span>
                      </section>
                   </div>
@@ -116,7 +116,7 @@
                      <ul>
                         <li 
                            v-for="(message, index) in contacts[counter].messages"
-                           :class="[ message.status === 'sent' ? 'sent' : 'received']"
+                           :class="[ message.status === 'sent' ? 'sent' : 'received' ]"
                         >
                            <p>{{ message.message }}</p>
                            <span class="date">{{ message.date }}</span>
