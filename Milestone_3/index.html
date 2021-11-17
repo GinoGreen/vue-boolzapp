@@ -115,11 +115,11 @@
                   <div class="messages-container">
                      <ul>
                         <li 
-                           v-for="(message, index) in contacts[counter].messages"
-                           :class="message.status"
+                           v-for="(item, index) in contacts[counter].messages"
+                           :class="item.status"
                         >
-                           <p>{{ message.message }}</p>
-                           <span class="date">{{ message.date }}</span>
+                           <p>{{ item.message }}</p>
+                           <span class="date">{{ item.date }}</span>
                         </li>
                      </ul>
                   </div>
@@ -135,7 +135,7 @@
                      type="text" 
                      placeholder="Invia un messaggio"
                      v-model="msgToSend"
-                     v-on:keyup.enter="sendMsg"
+                     v-on:keyup.enter="sendMsg(); receiveMsg();"
                   >
                   <!-- registrazione -->
                   <div class="icons">

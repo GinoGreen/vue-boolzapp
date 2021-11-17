@@ -137,33 +137,52 @@ const app = new Vue({
 
          return messagePreview;
       },
-      sendMsg() {
 
+      sendMsg() {
          if (this.msgToSend.trim() !== '') {
 
-            let time = '';
-            time = this.getDate(time);
+            
             
             const fullMsg = {
-               date: '10/01/2020 ' + time,
+               date: '10/01/2020 ' + this.getTime(),
                message: this.msgToSend,
                status: 'sent'
-            }
-      
-            this.contacts[this.counter].messages.push(fullMsg);
+            };
+            
+            this.pushMessage(fullMsg);
    
             this.msgToSend = '';
-         } else {
+         } /*else {
             console.log('Scrivi qualcosa');
-         }
+         }*/
          
       },
-      getDate(d) {
-         d = new Date();
+
+      receiveMsg() {
+         // console.log('ricevuto');
+         setTimeout( () => {
+
+            const fullMsg = {
+               date: '10/01/2020 ' + this.getTime(),
+               message: 'Daccordo',
+               status: 'received'
+            };
+
+            this.pushMessage(fullMsg);
+
+         }, 1000);
+      },
+      
+      getTime() {
+         const d = new Date();
          const time = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
          // console.log(time);
 
          return time;
+      },
+
+      pushMessage(item) {
+         this.contacts[this.counter].messages.push(item);
       }
    }
 });
