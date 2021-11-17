@@ -58,7 +58,7 @@
                   </div>
                   <input
                      v-model="stringSearch"
-                     @keypress="searchContact"
+                     @keyup="searchContact"
                      type="text" 
                      placeholder="Cerca o inizia una nuova chat"
                   >
@@ -67,7 +67,7 @@
                <!-- lista chat -->
                <div class="chat-list">
                   <div 
-                     v-if="contact.name.includes(stringSearch)"
+                     v-if="contact.visible || stringSearch === ''"
                      @click="onClickContact(index)"
                      class="contact"
                      :class="{active : (contacts[counter] === contact)}"

@@ -191,8 +191,15 @@ const app = new Vue({
       searchContact() {
          // console.log('key pressed');
          this.contacts.forEach(contact => {
-            if (contact.name.includes(this.stringSearch)) {
-               
+
+            const name = contact.name.toLowerCase();
+            const str = this.stringSearch.toLowerCase();
+
+            if (!name.includes(str)) {
+               contact.visible = false;
+            }
+            if (str === '') {
+               contact.visible = true;
             }
          });
          
