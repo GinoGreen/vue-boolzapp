@@ -133,11 +133,11 @@
                            <div class="options">
                               <i 
                                  class="fas fa-chevron-down"
-                                 @click="showOptions = !showOptions"
+                                 @click="showOptionsList(item)"
                               ></i>
                               <ul 
                                  class="list-options"
-                                 v-show="showOptions"
+                                 v-show="showOptions === item.message"
                               >
                                  <li>Info messaggio</li>
                                  <li> Elimina per me</li>

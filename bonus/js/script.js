@@ -121,7 +121,7 @@ const app = new Vue({
       lastMsgPreview: '',
       msgToSend: '',
       stringSearch: '',
-      showOptions: false
+      showOptions: ''
    },
    methods: {
       onClickContact(i) {
@@ -204,6 +204,14 @@ const app = new Vue({
             }
          });
          
+      },
+
+      showOptionsList(obj) {
+         if (this.showOptions === '') {
+            this.showOptions = obj.message;
+         } else {
+            this.showOptions = '';
+         }
       }
    }
 });

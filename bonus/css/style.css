@@ -297,9 +297,11 @@ ul {
    background-color: #fff;
    z-index: 999;
 }
+/* slittamento a destra per msg ricevuti */
 .received .list-options  {
    transform: translateX(-20%);
 }
+/* slittamento a sinistra per msg ricevuti */
 .sent .list-options {
    transform: translateX(-60%);
 }
