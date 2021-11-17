@@ -66,6 +66,10 @@
    
                <!-- lista chat -->
                <div class="chat-list">
+
+                  <!-- metodo alternativo::::
+                  v-if="contact.name.toLowerCase().includes(stringSearch.toLowerCase())"
+                  Senza utilizzare alcuna funzione in Vue.js -->
                   <div 
                      v-if="contact.visible || stringSearch === ''"
                      @click="onClickContact(index)"
