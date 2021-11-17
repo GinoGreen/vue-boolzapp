@@ -119,7 +119,8 @@ const app = new Vue({
       ],
       counter: 0,
       lastMsgPreview: '',
-      msgToSend: ''
+      msgToSend: '',
+      stringSearch: ''
    },
    methods: {
       onClickContact(i) {
@@ -175,7 +176,9 @@ const app = new Vue({
       
       getTime() {
          const d = new Date();
-         const time = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+         const time = `
+            ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}
+         `;
          // console.log(time);
 
          return time;
@@ -183,6 +186,16 @@ const app = new Vue({
 
       pushMessage(item) {
          this.contacts[this.counter].messages.push(item);
+      },
+
+      searchContact() {
+         // console.log('key pressed');
+         this.contacts.forEach(contact => {
+            if (contact.name.includes(this.stringSearch)) {
+               
+            }
+         });
+         
       }
    }
 });

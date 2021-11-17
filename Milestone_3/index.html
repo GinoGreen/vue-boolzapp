@@ -56,12 +56,18 @@
                   <div class="d-flex-center">
                      <i class="fas fa-search"></i>
                   </div>
-                  <input type="text" placeholder="Cerca o inizia una nuova chat">
+                  <input
+                     v-model="stringSearch"
+                     @keypress="searchContact"
+                     type="text" 
+                     placeholder="Cerca o inizia una nuova chat"
+                  >
                </div>
    
                <!-- lista chat -->
                <div class="chat-list">
                   <div 
+                     v-if="contact.name.includes(stringSearch)"
                      @click="onClickContact(index)"
                      class="contact"
                      :class="{active : (contacts[counter] === contact)}"
