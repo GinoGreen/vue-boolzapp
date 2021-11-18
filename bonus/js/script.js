@@ -1,3 +1,5 @@
+dayjs.extend(window.dayjs_plugin_customParseFormat);
+
 const app = new Vue({
    el: '#app',
 
@@ -121,32 +123,33 @@ const app = new Vue({
       lastMsgPreview: '',
       msgToSend: '',
       stringSearch: '',
-      showOptions: ''
+      showOptions: -1
    },
    methods: {
       onClickContact(i) {
          this.counter = i;
       },
-      getLastMsgPreview(i) {
-         let messagePreview = '';
-         const message = this.contacts[i].messages[this.contacts[i].messages.length - 1].message;
-
-         if (message.length < 14 ) {
-            messagePreview = message;
-         } else {
-            messagePreview = message.substring(0, 14) + "...";
+      getLastMsgPreview(contact) {
+         if (contact.messages.length > 0) {
+            let messagePreview = '';
+            //recupero l'ultimo messaggio del contatto di index
+            const message = contact.messages[contact.messages.length - 1].message;
+   
+            if (message.length < 14 ) {
+               messagePreview = message;
+            } else {
+               messagePreview = message.substring(0, 14) + "...";
+            }
+   
+            return messagePreview;
          }
-
-         return messagePreview;
       },
 
       sendMsg() {
          if (this.msgToSend.trim() !== '') {
-
-            
             
             const fullMsg = {
-               date: '10/01/2020 ' + this.getTime(),
+               date: this.getTime(),
                message: this.msgToSend,
                status: 'sent'
             };
@@ -159,14 +162,34 @@ const app = new Vue({
          }*/
          
       },
+      
+      getLastDate() {
+         if (this.contacts[this.counter].messages.length > 0) {
+
+            const lastDate = this.contacts[this.counter].messages[this.contacts[this.counter].messages.length - 1].date;
+
+            return lastDate;
+
+         }
+         
+      },
+
+      getLastDateChatList(contact) {
+         if (contact.messages.length > 0) {
+            
+            const lastDateChatList = contact.messages[contact.messages.length - 1].date
+   
+            return lastDateChatList;
+         }
+      },
 
       receiveMsg() {
          // console.log('ricevuto');
          setTimeout( () => {
 
             const fullMsg = {
-               date: '10/01/2020 ' + this.getTime(),
-               message: 'Daccordo',
+               date: this.getTime(),
+               message: "D'accordo",
                status: 'received'
             };
 
@@ -174,15 +197,10 @@ const app = new Vue({
 
          }, 1000);
       },
-      
-      getTime() {
-         const d = new Date();
-         const time = `
-            ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}
-         `;
-         // console.log(time);
 
-         return time;
+      getTime() {
+            
+            return dayjs().format("DD/MM/YYYY HH:mm:ss");
       },
 
       pushMessage(item) {
@@ -206,12 +224,16 @@ const app = new Vue({
          
       },
 
-      showOptionsList(obj) {
-         if (this.showOptions === '') {
-            this.showOptions = obj.message;
+      showOptionsList(i) {
+         if (this.showOptions === -1) {
+            this.showOptions = i;
          } else {
-            this.showOptions = '';
+            this.showOptions = -1;
          }
+      },
+
+      deleteMsg(i) {
+         this.contacts[this.counter].messages.splice(i, 1);
       }
    }
 });
