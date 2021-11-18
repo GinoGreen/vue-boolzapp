@@ -320,3 +320,10 @@ ul {
 .list-options li:hover {
    background-color: rgba(0,0,0,.1);
 }
+
+
+/* //BONUS del BONUS/// */
+.deleted {
+   color: #979797;
+   font-style: italic;
+}

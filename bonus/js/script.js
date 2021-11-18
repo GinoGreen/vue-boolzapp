@@ -123,7 +123,9 @@ const app = new Vue({
       lastMsgPreview: '',
       msgToSend: '',
       stringSearch: '',
-      showOptions: -1
+      showOptions: -1,
+      deleteForAll: -1,
+      textMsgDeleted: 'Hai eliminato questo messaggio'
    },
    methods: {
       onClickContact(i) {
@@ -200,10 +202,11 @@ const app = new Vue({
 
       getTime() {
             
-            return dayjs().format("DD/MM/YYYY HH:mm:ss");
+         return dayjs().format("DD/MM/YYYY HH:mm:ss");
       },
 
       pushMessage(item) {
+
          this.contacts[this.counter].messages.push(item);
       },
 
@@ -234,6 +237,24 @@ const app = new Vue({
 
       deleteMsg(i) {
          this.contacts[this.counter].messages.splice(i, 1);
+      },
+
+      ////////// BONUS DEL BONUS///////////////
+      deleteMsgForAll(i) {
+         if (this.deleteForAll === -1) {
+            this.deleteForAll = i;
+         }
+      },
+
+      messageDOM(item, i) {
+         if (this.deleteForAll !== i) {
+            return item.message;
+         } else {
+            item.message = this.textMsgDeleted;
+            this.deleteForAll = -1;
+            return item.message;
+            
+         }
       }
    }
 });

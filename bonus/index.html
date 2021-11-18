@@ -128,7 +128,12 @@
                            v-for="(item, index) in contacts[counter].messages"
                            :class="item.status"
                         >
-                           <p>{{ item.message }}</p>
+                           <p :class="{deleted : item.message === textMsgDeleted}">
+                              <i 
+                                 v-if="item.message === textMsgDeleted"
+                                 class="fas fa-ban"></i>
+                              {{ messageDOM(item, index) }}
+                           </p>
                            <span class="date">{{ item.date }}</span>
                            <div class="options">
                               <i 
@@ -142,7 +147,10 @@
                                  <li>Info messaggio</li>
                                  <li @click="deleteMsg(index), showOptionsList(index)"> Elimina per me</li>
                                  <!-- visualizza solo per messaggi inviati -->
-                                 <li v-if="item.status !== 'received'">Elimina per tutti</li>
+                                 <li 
+                                    v-if="item.status !== 'received'"
+                                    @click="deleteMsgForAll(index); showOptionsList(index);"
+                                 >Elimina per tutti</li>
                               </ul>
                            </div>
                         </li>
