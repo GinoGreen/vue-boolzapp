@@ -119,22 +119,34 @@ const app = new Vue({
             ],
          },
       ],
-      counter: 0,
+      
+      activeContact: 0, // user attivo corrente
       lastMsgPreview: '',
-      msgToSend: '',
-      stringSearch: '',
-      showOptions: -1,
-      deleteForAll: -1,
+      msgToSend: '', // messaggio da inviare
+      stringSearch: '', // v-model della ricerca contatti
+      showOptions: -1, // indice di drop down menu 
+      deleteForAll: -1, // indice di "elemina per tutti"
       textMsgDeleted: 'Hai eliminato questo messaggio'
    },
    methods: {
+      /**
+       * salvo l'indice del contatto corrente in activeContact
+       * @param {Number} i 
+       */
       onClickContact(i) {
-         this.counter = i;
+         this.activeContact = i;
       },
+
+      /**
+       * il messaggio viene trocato se é lungo fino a 13 caratteri
+       * @param {Object} contact 
+       * @returns 
+       */
       getLastMsgPreview(contact) {
+         //controllo di array con almeno un messaggio esistente
          if (contact.messages.length > 0) {
             let messagePreview = '';
-            //recupero l'ultimo messaggio del contatto di index
+            //recupero l'ultimo messaggio del contatto corrente
             const message = contact.messages[contact.messages.length - 1].message;
    
             if (message.length < 14 ) {
@@ -147,6 +159,9 @@ const app = new Vue({
          }
       },
 
+      /**
+       * crea un oggetto di messaggi, con proprietá message uguale al v-model di msgToSend. Se il messaggio é valido (trim), viene pushato nell'array di messaggi del contatto corrente
+       */
       sendMsg() {
          if (this.msgToSend.trim() !== '') {
             
@@ -165,10 +180,15 @@ const app = new Vue({
          
       },
       
+      /**
+       * recupero la data dell'ultimo messaggio
+       * @returns 
+       */
       getLastDate() {
-         if (this.contacts[this.counter].messages.length > 0) {
+         //controllo se l'array messages contiene almeno un oggetto
+         if (this.contacts[this.activeContact].messages.length > 0) {
 
-            const lastDate = this.contacts[this.counter].messages[this.contacts[this.counter].messages.length - 1].date;
+            const lastDate = this.contacts[this.activeContact].messages[this.contacts[this.activeContact].messages.length - 1].date;
 
             return lastDate;
 
@@ -176,6 +196,11 @@ const app = new Vue({
          
       },
 
+      /**
+       * recupero la data dell'ultimo messagio in messages di contact
+       * @param {Object} contact 
+       * @returns 
+       */
       getLastDateChatList(contact) {
          if (contact.messages.length > 0) {
             
@@ -185,6 +210,9 @@ const app = new Vue({
          }
       },
 
+      /**
+       * genero un messaggio automatico ricevuto
+       */
       receiveMsg() {
          // console.log('ricevuto');
          setTimeout( () => {
@@ -200,16 +228,27 @@ const app = new Vue({
          }, 1000);
       },
 
+      /**
+       * recupero data con dayjs
+       * @returns 
+       */
       getTime() {
             
          return dayjs().format("DD/MM/YYYY HH:mm:ss");
       },
 
+      /**
+       * pusho un item dento all'array dei messaggi del contatto corrente
+       * @param {*} item 
+       */
       pushMessage(item) {
 
-         this.contacts[this.counter].messages.push(item);
+         this.contacts[this.activeContact].messages.push(item);
       },
 
+      /**
+       * per ogni contatto nella lista chat, confronto il nome del contatto con la stringa scritta nella barra di ricerca (trasformando, prima, tutto in lowercase)
+       */
       searchContact() {
          // console.log('key pressed');
          this.contacts.forEach(contact => {
@@ -227,6 +266,10 @@ const app = new Vue({
          
       },
 
+      /**
+       * se il value di showOption non corrisponde a nessuno degli indici dell'array messages del contatto corrente, allora gli assegno il valore dell'indice stesso, altrimenti gli assegno un numero che non corrisponderá mai a nessun indice di array
+       * @param {Number} i 
+       */
       showOptionsList(i) {
          if (this.showOptions === -1) {
             this.showOptions = i;
@@ -235,17 +278,36 @@ const app = new Vue({
          }
       },
 
+      /**
+       * rimuovo l'elemento in posizione 'i' dall'array di messaggi del contatto corrente
+       * @param {Number} i 
+       */
       deleteMsg(i) {
-         this.contacts[this.counter].messages.splice(i, 1);
+         this.contacts[this.activeContact].messages.splice(i, 1);
       },
 
+
       ////////// BONUS DEL BONUS///////////////
+
+      /**
+       * se il value di deleteForAll non corrisponde a nessuno degli indici dell'array messages del contatto corrente, allora gli assegno il valore dell'indice stesso
+       * @param {Number} i 
+       */
       deleteMsgForAll(i) {
          if (this.deleteForAll === -1) {
             this.deleteForAll = i;
          }
       },
 
+      /**
+       * se il value  di deleteForAll é diverso dall'indice del messaggio corrente, allora il messaggio rimane invariato.
+       * altrimenti il messaggio diventa uguale a 'textMsgDeleted'
+       * resetto il value di deleteFroAll a un valore che non corrisponderá mai a i
+       * ritorno il messaggio modificato
+       * @param {Object} item 
+       * @param {Number} i 
+       * @returns 
+       */
       messageDOM(item, i) {
          if (this.deleteForAll !== i) {
             return item.message;

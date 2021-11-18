@@ -74,7 +74,7 @@
                      v-if="contact.visible || stringSearch === ''"
                      @click="onClickContact(index)"
                      class="contact"
-                     :class="{active : (contacts[counter] === contact)}"
+                     :class="{active : (contacts[activeContact] === contact)}"
                      v-for="(contact, index) in contacts"
                   >
                      <!-- avatar img -->
@@ -103,11 +103,11 @@
                   <!-- info profilo chat aperta -->
                   <div class="profile">
                      <img 
-                        :src="`img/avatar${contacts[counter].avatar}.jpg`"
+                        :src="`img/avatar${contacts[activeContact].avatar}.jpg`"
                         class="avatar"
                      >
                      <section>
-                        <h5>{{ contacts[counter].name }}</h5>
+                        <h5>{{ contacts[activeContact].name }}</h5>
                         <span class="last-access">
                            Ultimo accesso {{ getLastDate() }}
                         </span>
@@ -125,7 +125,7 @@
                   <div class="messages-container">
                      <ul>
                         <li 
-                           v-for="(item, index) in contacts[counter].messages"
+                           v-for="(item, index) in contacts[activeContact].messages"
                            :class="item.status"
                         >
                            <p :class="{deleted : item.message === textMsgDeleted}">
