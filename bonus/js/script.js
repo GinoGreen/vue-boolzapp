@@ -192,6 +192,8 @@ const app = new Vue({
 
             return lastDate;
 
+         } else {
+            return '';
          }
          
       },
@@ -286,6 +288,9 @@ const app = new Vue({
          this.contacts[this.activeContact].messages.splice(i, 1);
       },
 
+      resetShowOptionsList() {
+         this.showOptions = -1;
+      },
 
       ////////// BONUS DEL BONUS///////////////
 
@@ -315,7 +320,6 @@ const app = new Vue({
             item.message = this.textMsgDeleted;
             this.deleteForAll = -1;
             return item.message;
-            
          }
       }
    }

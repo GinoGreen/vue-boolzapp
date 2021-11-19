@@ -72,7 +72,7 @@
                   Senza utilizzare alcuna funzione in Vue.js -->
                   <div 
                      v-if="contact.visible || stringSearch === ''"
-                     @click="onClickContact(index)"
+                     @click="onClickContact(index); resetShowOptionsList();"
                      class="contact"
                      :class="{active : (contacts[activeContact] === contact)}"
                      v-for="(contact, index) in contacts"
