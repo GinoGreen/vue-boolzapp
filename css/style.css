@@ -401,6 +401,9 @@ ul {
       min-width: 29%;
       max-width: 84%;
    }
+   .right-side .display-messages ul li span.date {
+      padding-left: 6px;
+   }
    .right-side .display-messages span.date {
       font-size: .55em;
    }
