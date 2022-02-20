@@ -353,7 +353,7 @@ ul {
       margin: 0 5px;
    }
    .chat-list .contact {
-      overflow-y: hidden;
+      overflow: hidden;
    }
    .chat-list .contact .date {
       display: none;
