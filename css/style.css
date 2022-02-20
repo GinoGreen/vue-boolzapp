@@ -327,3 +327,85 @@ ul {
    color: #979797;
    font-style: italic;
 }
+
+/* MEDIA queries */
+@media screen and (max-width: 768px) {
+   .container {
+      height: 100vh;
+      width: 100vw;
+      min-width: unset;
+   }
+
+   .left-side {
+      width: 130px;
+   }
+   .icons.grey {
+      display: none;
+   }
+   .notification-area {
+      display: grid;
+      place-items: center;
+   }
+   .active-notification {
+      display: none;
+   }
+   .chat-list img.avatar {
+      margin: 0 5px;
+   }
+   .chat-list .contact {
+      overflow-y: hidden;
+   }
+   .chat-list .contact .date {
+      display: none;
+   }
+   .right-side {
+      width: calc(100% - 130px);
+   }
+   .display-messages span.date {
+      font-size: .6em;
+   }
+}
+
+@media screen and (max-width: 576px) {
+   .left-side {
+      width: 70px;
+   }
+   .chat-list .last-msg,
+   .left-side .profile h5 {
+      display: none;
+   }
+   .chat-list img.avatar,
+   .left-side .profile {
+      margin: 0;
+      width: 45px;
+      height: 45px;
+   }
+   .chat-list .contact,
+   .top-content {
+      display: grid;
+      place-items: center;
+   }
+   .search-area .d-flex-center {
+      width: 50%;
+   }
+   
+   .right-side {
+      width: calc(100% - 70px);
+   }
+   .right-side .profile span.date {
+      font-size: .6em;
+   }
+   .right-side .display-messages ul li {
+      font-size: .8em;
+      padding: 10px;
+      min-width: 29%;
+      max-width: 84%;
+   }
+   .right-side .display-messages span.date {
+      font-size: .55em;
+   }
+}
+
+* {
+   /* border: 1px solid red; */
+}
